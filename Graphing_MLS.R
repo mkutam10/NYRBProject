@@ -488,35 +488,9 @@ persp(CrsandTBLOGX, CrsandTBLOGY, CrsandTBLOGZ, d = 3, theta = 45, phi = 20, lth
       xlab = 'Crosses', ylab = 'TBs', zlab = 'Winning Probability', 
       main = 'Log. Reg. for Crosses, Through Balls',
       ticktype = 'simple',  # ARROWS! 
-      cex.lab = 0.84)
-
-# theta ROTATES COUNTERECLOCKWISE HORIZONTALLY, phi FRONT FACING ROLL VERTICALLY. 
+      cex.lab = 0.84) # theta ROTATES COUNTERECLOCKWISE HORIZONTALLY, phi FRONT FACING ROLL VERTICALLY. 
 
 # START WITH 2 2D GRAPHS, SAVED IN DOCUMENTS
 # THEN INCLUDE BOTH LM with ONE COLOR and LOG with TWO COLORS. (2 GRAPHS)
 # FINALLY INCLUDE WIN, DRAW, LOSE CLASSIFICATION TOO FOR *THREE* COLORS... (2 GRAPHS)
-
-######## EXCESS. ########
-ggplot(mtcars, aes(wt, mpg)) +
-  geom_point(shape = 21, colour = "black", fill = "white", size = 5, stroke = 5)
-
-# CONCLUSION: USELESS WAY TO MAP! TOO MANY POINTS, 886529281 ELEMENTS FOR THE MATRIX. SCALES UP TOO QUICKLY!
-
-# # MAPPING REGRESSION SURFACE. USE EXACT SAME DATA TO KEEP CONTINUITY ACROSS REGRESSIONS?
-# CrsandAttPenXAXIS = MLS_REDBULLS$Crs
-# CrsandAttPenYAXIS = MLS_REDBULLS$Att.Pen
-# CrsandAttPenSURFACE2 = expand.grid(Crs = CrsandAttPenXAXIS, Att.Pen = CrsandAttPenYAXIS, KEEP.OUT.ATTRS = FALSE) # DIMENSION and DIMNAMES NOT NEEDED in our case.
-# d <- setNames(data.frame(CrsandAttPenSURFACE2), c('Crs', 'Att.Pen'))
-# 
-# CrsandAttPenSURFACE2$GF = predict.lm(CrsandAttPenGFLM, newdata = d)
-# CrsandAttPenSURFACE2 = transform(CrsandAttPenSURFACE2, TEST = -0.09121 * Crs + 0.05657 * Att.Pen + 1.32656)
-# 
-# # CrsandAttPenSURFACE = acast(CrsandAttPenSURFACE2, Crs ~ Att.Pen, value.var = 'GF', fun.aggregate = mean)
-# 
-# TRIX = predict.lm(CrsandAttPenGFLM, newdata = CrsandAttPenSURFACE2)
-# CrsandAttPenSURFACE = matrix(TRIX, nrow = length(d$Crs), ncol = length(d$Att.Pen))
-# 
-# CrsandAttPenGF_GRAPH %>% add_surface(CrsandAttPenGF_GRAPH, z = ~CrsandAttPenSURFACE, y = ~CrsandAttPenYAXIS, x = ~CrsandAttPenXAXIS, showscale = FALSE) %>%
-#   layout(showlegend = FALSE)
-
-
+# USELESS WAY TO MAP WITH plotly! TOO MANY POINTS, 886529281 ELEMENTS FOR THE MATRIX. SCALES UP FAR TOO QUICKLY!
