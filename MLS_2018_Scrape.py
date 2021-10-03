@@ -13,20 +13,20 @@ START = timer()
 # Foundations. USE '' for CODE, STRINGS, TERMINAL OUTPUT; "" for saying stuff like "FOR" loops, PARAMETERS, and GENERAL QUOTATION USE.
 FBREF = 'https://fbref.com'
 PAGE_url = FBREF + '/en/comps/22/1759/2018-Major-League-Soccer-Stats'  # ENSURE LINK IS FOR RIGHT YEAR!
-BIG_response = requests.get(PAGE_url, timeout = 20)
+FULL_response = requests.get(PAGE_url, timeout = 20)
 COUNTER = 0
-# print(BIG_response)  # 'Response [200]>' means GOOD!
-# print(type(response)) # Returns '<class 'requests.models.Response'>'
-# print(response.text)  # A STRING, with UNICODE as the default character encoding in PYTHON (SEE: https://docs.python.org/3/howto/unicode.html).
+# print(FULL_response)  # 'Response [200]>' means GOOD!
+# print(type(FULL_response)) # Returns '<class 'requests.models.Response'>'
+# print(FULL_response.text)  # A STRING, with UNICODE as the default character encoding in PYTHON (SEE: https://docs.python.org/3/howto/unicode.html).
 # IGNORES, for what I see, the "iframe", "::after" comments, and general formatting content at the end. # DOING a type(response.text) returns a '<class 'str'>'.
 
 # COMPILING and PARSING.
 compiledchars = re.compile('<!--|-->')  # Use for EFFICIENCY as detailed on https://docs.python.org/3/library/re.html and, more importantly, for using PATTERN.SUB PROPERLY.
-BIG_beautifulsoup = BeautifulSoup(compiledchars.sub('', BIG_response.text), 'lxml')  # Specify 'lxml' as the PARSER we want to use. # ALSO, DELETES the commented <!-- and --> parts (for some reason)?
+FULL_beautifulsoup = BeautifulSoup(compiledchars.sub('', FULL_response.text), 'lxml')  # Specify 'lxml' as the PARSER we want to use. # ALSO, DELETES the commented <!-- and --> parts (for some reason)?
 # print(type(beautifulsoup))  # Returns '<class 'bs4.BeautifulSoup'>'.
 
 # FINDING TEXTS to NAVIGATE TO EACH TEAM's HOME STATISTICS PAGE.
-hyperlinkTEXTS = BIG_beautifulsoup.find_all('tbody')[4].find_all(href = re.compile('squads'), limit = 1)  # THEN 5th TABLE after 2 * OVERALL, 2 * HOME/AWAY. # '(href = re.compile('squads'))' narrows JUST LIKE '.find('a')'.
+hyperlinkTEXTS = FULL_beautifulsoup.find_all('tbody')[4].find_all(href = re.compile('squads'), limit = 1)  # THEN 5th TABLE after 2 * OVERALL, 2 * HOME/AWAY. # '(href = re.compile('squads'))' narrows JUST LIKE '.find('a')'.
 # print(len(hyperlinkTEXTS))  # 23, as it SHOULD BE for 2018 SEASON.
 
 # EMPTY DATAFRAME TO HOLD !ALL! THE DATA.
