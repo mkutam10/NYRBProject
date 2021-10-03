@@ -12,7 +12,7 @@ MLS_2019 = read.csv('MLS_2019.csv')
 MLS_2018 = read.csv('MLS_2018.csv')
 
 class(MLS_2020$GF) # AS CHARACTER. 
-class(MLS_2019$GF) # AS INTEGER (due to lack of penalty shootouts that year!). 
+class(MLS_2019$GF) # AS INTEGER (due to lack of penalty shootouts that year). 
 class(MLS_2018$GF) # AS CHARACTER. 
 
 ### FINDING NAs. 
