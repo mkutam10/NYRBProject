@@ -295,8 +295,3 @@ PrgDistOnGF_TOTAL = ggplot(data = MLS_TOTAL, aes(x = PrgDist, y = GF, color = 'o
   geom_point(size = 1.2, color = 'orange3', show.legend = FALSE) + 
   geom_smooth(method = lm, se = FALSE, size = 1.75, linetype = 'dashed', color= 'navyblue')
 PrgDistOnGF_TOTAL
-
-
-
-
-
