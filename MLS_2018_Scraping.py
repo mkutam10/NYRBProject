@@ -18,7 +18,7 @@ COUNTER = 0
 # print(FULL_response)  # 'Response [200]>' means GOOD!
 # print(type(FULL_response)) # Returns '<class 'requests.models.Response'>'
 # print(FULL_response.text)  # A STRING, with UNICODE as the default character encoding in PYTHON (SEE: https://docs.python.org/3/howto/unicode.html).
-# IGNORES, for what I see, the "iframe", "::after" comments, and general formatting content at the end. # DOING a type(response.text) returns a '<class 'str'>'.
+# IGNORES, for what I see, the "iframe", "::after" comments, and general formatting content. # DOING a type(response.text) returns a '<class 'str'>'.
 
 # COMPILING and PARSING.
 compiledchars = re.compile('<!--|-->')  # Use for EFFICIENCY as detailed on https://docs.python.org/3/library/re.html and, more importantly, for using PATTERN.SUB PROPERLY.
